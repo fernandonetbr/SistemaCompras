@@ -9,8 +9,8 @@ namespace SistemaCompra.Application.SolicitacaoCompra.Command.RegistrarCompra
 {
     public class RegistrarCompraCommand : IRequest<bool>
     {
-        public UsuarioSolicitante UsuarioSolicitante { get; private set; }
-        public NomeFornecedor NomeFornecedor { get; private set; }
+        public string UsuarioSolicitante { get; set; }
+        public string NomeFornecedor { get; set; }
         public DateTime Data { get; private set; }        
     }
 }

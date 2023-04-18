@@ -65,10 +65,7 @@ namespace SistemaCompra.Domain.SolicitacaoCompraAggregate
 
         public void RegistrarCompra(IEnumerable<Item> itens)
         {
-            /*foreach (var item in itens)
-            {
-                
-            }*/
+            
         }
 
 

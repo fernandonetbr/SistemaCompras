@@ -10,8 +10,8 @@ namespace SistemaCompra.Infra.Data.SolicitacaoCompra
     {
         public void Configure(EntityTypeBuilder<SolicitacaoCompraAgg.SolicitacaoCompra> builder)
         {
-            builder.ToTable("SolicitacaoCompra");
-            builder.OwnsOne(c => c.TotalGeral, b => b.Property("Value").HasColumnName("TotalGeral"));
+            /*builder.ToTable("SolicitacaoCompra");
+            builder.OwnsOne(c => c.TotalGeral, b => b.Property("Value").HasColumnName("TotalGeral"));*/
         }
     }
 }

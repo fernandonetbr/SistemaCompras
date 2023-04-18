@@ -12,7 +12,8 @@ namespace SistemaCompra.API.Migrations
                 columns: table => new
                 {
                     NomeFornecedorId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,7 +41,8 @@ namespace SistemaCompra.API.Migrations
                 columns: table => new
                 {
                     UsuarioSolicitanteId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -55,6 +57,8 @@ namespace SistemaCompra.API.Migrations
                     UsuarioSolicitanteId = table.Column<int>(nullable: true),
                     NomeFornecedorId = table.Column<int>(nullable: true),
                     Data = table.Column<DateTime>(nullable: false),
+                    TotalGeral = table.Column<decimal>(nullable: false),
+                    CondicaoPagamento = table.Column<int>(nullable: false),
                     Situacao = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -103,7 +107,7 @@ namespace SistemaCompra.API.Migrations
             migrationBuilder.InsertData(
                 table: "Produto",
                 columns: new[] { "Id", "Categoria", "Descricao", "Nome", "Situacao" },
-                values: new object[] { new Guid("f2b53f90-4c97-41a6-9625-582d7e53262c"), 1, "Descricao01", "Produto01", 1 });
+                values: new object[] { new Guid("7bcb477e-2c71-4564-9d16-42bc69436c0f"), 1, "Descricao01", "Produto01", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Item_ProdutoId",

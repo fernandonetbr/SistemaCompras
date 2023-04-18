@@ -10,7 +10,7 @@ namespace SistemaCompra.Domain.SolicitacaoCompraAggregate
     {
         public int NomeFornecedorId { get; set; }
 
-        public string Nome { get; }
+        public string Nome { get; set; }
 
         private NomeFornecedor() { }
 

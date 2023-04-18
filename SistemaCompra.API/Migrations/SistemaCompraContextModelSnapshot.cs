@@ -44,7 +44,7 @@ namespace SistemaCompra.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f2b53f90-4c97-41a6-9625-582d7e53262c"),
+                            Id = new Guid("7bcb477e-2c71-4564-9d16-42bc69436c0f"),
                             Categoria = 1,
                             Descricao = "Descricao01",
                             Nome = "Produto01",
@@ -83,6 +83,9 @@ namespace SistemaCompra.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("NomeFornecedorId");
 
                     b.ToTable("NomeFornecedor");
@@ -94,6 +97,9 @@ namespace SistemaCompra.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("CondicaoPagamento")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
@@ -102,6 +108,9 @@ namespace SistemaCompra.API.Migrations
 
                     b.Property<int>("Situacao")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TotalGeral")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("UsuarioSolicitanteId")
                         .HasColumnType("int");
@@ -121,6 +130,9 @@ namespace SistemaCompra.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioSolicitanteId");
 

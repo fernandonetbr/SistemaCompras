@@ -11,6 +11,7 @@ namespace SistemaCompra.Application.SolicitacaoCompra.Command.RegistrarCompra
     {
         public string UsuarioSolicitante { get; set; }
         public string NomeFornecedor { get; set; }
-        public DateTime Data { get; private set; }        
+        public decimal TotalGeral { get; set; }
+        public int CondicaoPagamento { get; set; }
     }
 }

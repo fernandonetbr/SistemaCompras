@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Linq;
 
 namespace SistemaCompra.Domain.SolicitacaoCompraAggregate
@@ -15,20 +16,22 @@ namespace SistemaCompra.Domain.SolicitacaoCompraAggregate
         public UsuarioSolicitante UsuarioSolicitante { get; private set; }
         public NomeFornecedor NomeFornecedor { get; private set; }        
         public IList<Item> Itens { get; private set; }
-        public DateTime Data { get; private set; }
-        [NotMapped]
-        public Money TotalGeral { get; private set; }
+        public DateTime Data { get; private set; }        
+        public decimal TotalGeral { get; private set; }
+        public int CondicaoPagamento { get; set; }
         public SituacaoCompra Situacao { get; private set; }
 
         private SolicitacaoCompra() { }
 
-        public SolicitacaoCompra(string usuarioSolicitante, string nomeFornecedor, string data)
+        public SolicitacaoCompra(string usuarioSolicitante, string nomeFornecedor, decimal totalGeral, int condicaoPagto)
         {
             Id = Guid.NewGuid();
             UsuarioSolicitante = new UsuarioSolicitante(usuarioSolicitante);
             NomeFornecedor = new NomeFornecedor(nomeFornecedor);
             Data = DateTime.Now;
+            TotalGeral = totalGeral;
             Situacao = SituacaoCompra.Solicitado;
+            CondicaoPagamento = RetornaCondicaoPagamento(totalGeral, condicaoPagto);
         }
 
         public void AdicionarItem(Produto produto, int qtde)
@@ -36,15 +39,15 @@ namespace SistemaCompra.Domain.SolicitacaoCompraAggregate
             Itens.Add(new Item(produto, qtde));
         }
 
-        public int RetornaCondicaoPagamento(double valor)
+        public int RetornaCondicaoPagamento(decimal valor, int condPagto)
         {
 
             if (valor > 50000)
             {
-                return new CondicaoPagamento(30).Valor;
+                return 30;
             }
             else {
-                return 0;
+                return condPagto;
             }            
             
 
